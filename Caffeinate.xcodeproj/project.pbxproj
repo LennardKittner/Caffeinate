@@ -10,6 +10,7 @@
 		DB400534290939F400B32892 /* CaffeinateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB400533290939F400B32892 /* CaffeinateApp.swift */; };
 		DB400538290939F600B32892 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB400537290939F600B32892 /* Assets.xcassets */; };
 		DB40053B290939F600B32892 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB40053A290939F600B32892 /* Preview Assets.xcassets */; };
+		DB4005452909447F00B32892 /* Appdelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4005442909447F00B32892 /* Appdelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +19,7 @@
 		DB400537290939F600B32892 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB40053A290939F600B32892 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DB40053C290939F600B32892 /* Caffeinate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Caffeinate.entitlements; sourceTree = "<group>"; };
+		DB4005442909447F00B32892 /* Appdelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appdelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				DB400533290939F400B32892 /* CaffeinateApp.swift */,
+				DB4005442909447F00B32892 /* Appdelegate.swift */,
 				DB400537290939F600B32892 /* Assets.xcassets */,
 				DB40053C290939F600B32892 /* Caffeinate.entitlements */,
 				DB400539290939F600B32892 /* Preview Content */,
@@ -136,6 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB4005452909447F00B32892 /* Appdelegate.swift in Sources */,
 				DB400534290939F400B32892 /* CaffeinateApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +274,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -297,6 +302,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
