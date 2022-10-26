@@ -13,7 +13,7 @@ import IOKit.pwr_mgt
 class AppDelegate: NSObject, NSApplicationDelegate {
     var statusBarItem: NSStatusItem?
     var hasCoffee = false
-    var hardMode = false
+    var hardMode = false // alwasys false (for now)
     var caffeinateTask :Progress?
     var noSleepAssertionID: IOPMAssertionID = 0
     var noSleepReturn: IOReturn?
@@ -48,12 +48,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func preventSleep(_ hardMode: Bool) {
         if !hardMode {
             disableScreenSleep(reason: "Caffeinate")
+        } else {
+            // This requires root privileges.
+            // TODO: figure out how to get privileges.
+            DispatchQueue.global(qos: .background).async {
+                var errorDict: NSDictionary? = nil
+                NSAppleScript(source: "do shell script \"sudo pmset disablesleep 1\" with administrator privileges")!.executeAndReturnError(&errorDict)
+            }
         }
     }
     
     func reEnableSleep(_ hardMode: Bool) {
         if !hardMode {
             enableScreenSleep()
+        } else {
+            // This requires root privileges.
+            // TODO: figure out how to get privileges.
+            DispatchQueue.global(qos: .background).async {
+                var errorDict: NSDictionary? = nil
+                NSAppleScript(source: "do shell script \"sudo pmset disablesleep 0\" with administrator privileges")!.executeAndReturnError(&errorDict)
+            }
         }
     }
   
