@@ -8,12 +8,13 @@
 import Foundation
 import AppKit
 import IOKit.pwr_mgt
-
+import SwiftUI
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     var statusBarItem: NSStatusItem?
     var hasCoffee = false
     var hardMode = false // alwasys false (for now)
+    var configHandler = ConfigHandler()
     var caffeinateTask :Progress?
     var noSleepAssertionID: IOPMAssertionID = 0
     var noSleepReturn: IOReturn?
@@ -21,12 +22,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         updateState(coffee: hasCoffee)
-        statusBarItem?.button?.action = #selector(AppDelegate.caffeinat(_:))
+        statusBarItem?.button?.action = #selector(AppDelegate.statusItemClicked(_:))
+        statusBarItem?.button?.sendAction(on: [.leftMouseUp, .rightMouseUp])
     }
- 
-    @objc func caffeinat(_ sender: Any?) {
-        hasCoffee.toggle()
-        updateState(coffee: hasCoffee)
+     
+    @objc func statusItemClicked(_ sender: Any?) {
+        let event = NSApp.currentEvent!
+        if event.type == NSEvent.EventType.rightMouseUp {
+            var toolbar = Toolbar(tabs: ["About", "Settings"]).environmentObject(configHandler)
+            TabView()
+                .environmentObject(configHandler)
+                .openNewWindowWithToolbar(title: "Caffeinate", rect: NSRect(x: 0, y: 0, width: 450, height: 150), style: [.closable, .titled],identifier: "Settings", toolbar: toolbar)
+        } else {
+            hasCoffee.toggle()
+            updateState(coffee: hasCoffee)
+        }
       }
     
     func updateState(coffee: Bool) {
@@ -51,6 +61,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         } else {
             // This requires root privileges.
             // TODO: figure out how to get privileges.
+            // https://github.com/trilemma-dev/SwiftAuthorizationSample/tree/main
             DispatchQueue.global(qos: .background).async {
                 var errorDict: NSDictionary? = nil
                 NSAppleScript(source: "do shell script \"sudo pmset disablesleep 1\" with administrator privileges")!.executeAndReturnError(&errorDict)
@@ -64,6 +75,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         } else {
             // This requires root privileges.
             // TODO: figure out how to get privileges.
+            // https://github.com/trilemma-dev/SwiftAuthorizationSample/tree/main
             DispatchQueue.global(qos: .background).async {
                 var errorDict: NSDictionary? = nil
                 NSAppleScript(source: "do shell script \"sudo pmset disablesleep 0\" with administrator privileges")!.executeAndReturnError(&errorDict)
