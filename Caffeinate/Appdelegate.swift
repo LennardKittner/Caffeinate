@@ -15,7 +15,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var hasCoffee = false
     var hardMode = false // alwasys false (for now)
     var configHandler = ConfigHandler()
-    var caffeinateTask :Progress?
     var noSleepAssertionID: IOPMAssertionID = 0
     var noSleepReturn: IOReturn?
 
@@ -27,6 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         )
         statusBarItem?.button?.action = #selector(AppDelegate.statusItemClicked(_:))
         statusBarItem?.button?.sendAction(on: [.leftMouseUp, .rightMouseUp])
+        statusBarItem?.button?.toolTip = "Caffeinate is not active"
     }
      
     @objc func statusItemClicked(_ sender: Any?) {
@@ -53,6 +53,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     systemSymbolName: "cup.and.saucer.fill",
                     accessibilityDescription: nil
                 )
+                statusBarItem?.button?.toolTip = "Caffeinate is active"
             }
         } else {
             success = reEnableSleep(hardMode)
@@ -61,6 +62,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     systemSymbolName: "cup.and.saucer",
                     accessibilityDescription: nil
                 )
+                statusBarItem?.button?.toolTip = "Caffeinate is not active"
             }
         }
         return success
