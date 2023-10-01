@@ -18,12 +18,12 @@ struct About: View {
                 .padding(.bottom, 10)
             Spacer()
                 .frame(height: 10)
-            Text("Version: \(version ?? "1.0")")
+            Text("Version: \(version ?? "1.0.1")")
                 .font(.subheadline)
             Text("Author: Lennard Kittner")
                 .font(.subheadline)
             Button(action: {
-                let url = URL(string: "https://github.com/Lennard599")!
+                let url = URL(string: "https://github.com/LennardKittner")!
                 NSWorkspace.shared.open(url)
             }) {
                 Text("My GitHub")
