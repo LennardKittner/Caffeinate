@@ -18,7 +18,7 @@ struct About: View {
                 .padding(.bottom, 10)
             Spacer()
                 .frame(height: 10)
-            Text("Version: \(version ?? "1.0.1")")
+            Text("Version: \(version ?? "1.0.2")")
                 .font(.subheadline)
             Text("Author: Lennard Kittner")
                 .font(.subheadline)
