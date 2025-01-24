@@ -13,7 +13,7 @@ struct Toolbar: View {
     
     var body: some View {
         Picker("", selection: $configHandler.curretnTab) {
-            ForEach(tabs.indices) { i in
+            ForEach(Array(tabs.indices), id: \.self ) { i in
                 Text(tabs[i]).tag(i)
             }
         }

@@ -33,7 +33,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let event = NSApp.currentEvent!
         if event.type == NSEvent.EventType.rightMouseUp {
             let toolbar = Toolbar(tabs: ["About", "Settings"]).environmentObject(configHandler)
-            TabView()
+            let _ = TabView()
                 .environmentObject(configHandler)
                 .openNewWindowWithToolbar(title: "Caffeinate", rect: NSRect(x: 0, y: 0, width: 450, height: 150), style: [.closable, .titled],identifier: "Settings", toolbar: toolbar)
         } else {
