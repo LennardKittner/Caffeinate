@@ -11,11 +11,6 @@
 		DB400538290939F600B32892 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB400537290939F600B32892 /* Assets.xcassets */; };
 		DB40053B290939F600B32892 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB40053A290939F600B32892 /* Preview Assets.xcassets */; };
 		DB4005452909447F00B32892 /* Appdelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4005442909447F00B32892 /* Appdelegate.swift */; };
-		DB6B90B2290966B900627F78 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6B90B1290966B900627F78 /* About.swift */; };
-		DB6B90B4290966E000627F78 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6B90B3290966E000627F78 /* Utility.swift */; };
-		DB6B90B9290967D400627F78 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6B90B6290967D400627F78 /* SettingsView.swift */; };
-		DB6B90BA290967D400627F78 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6B90B7290967D400627F78 /* TabView.swift */; };
-		DB6B90BB290967D400627F78 /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6B90B8290967D400627F78 /* Toolbar.swift */; };
 		DB6B90BE290968F700627F78 /* ConfigData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6B90BC290968F600627F78 /* ConfigData.swift */; };
 		DB6B90BF290968F700627F78 /* ConfigHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6B90BD290968F600627F78 /* ConfigHandler.swift */; };
 /* End PBXBuildFile section */
@@ -27,11 +22,6 @@
 		DB40053A290939F600B32892 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DB40053C290939F600B32892 /* Caffeinate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Caffeinate.entitlements; sourceTree = "<group>"; };
 		DB4005442909447F00B32892 /* Appdelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appdelegate.swift; sourceTree = "<group>"; };
-		DB6B90B1290966B900627F78 /* About.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = About.swift; path = Caffeinate/Settings/About.swift; sourceTree = SOURCE_ROOT; };
-		DB6B90B3290966E000627F78 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
-		DB6B90B6290967D400627F78 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		DB6B90B7290967D400627F78 /* TabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
-		DB6B90B8290967D400627F78 /* Toolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
 		DB6B90BC290968F600627F78 /* ConfigData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigData.swift; sourceTree = "<group>"; };
 		DB6B90BD290968F600627F78 /* ConfigHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,7 +59,6 @@
 				DB6B90B52909671E00627F78 /* Settings */,
 				DB400533290939F400B32892 /* CaffeinateApp.swift */,
 				DB4005442909447F00B32892 /* Appdelegate.swift */,
-				DB6B90B3290966E000627F78 /* Utility.swift */,
 				DB400537290939F600B32892 /* Assets.xcassets */,
 				DB40053C290939F600B32892 /* Caffeinate.entitlements */,
 				DB400539290939F600B32892 /* Preview Content */,
@@ -90,10 +79,6 @@
 			children = (
 				DB6B90BC290968F600627F78 /* ConfigData.swift */,
 				DB6B90BD290968F600627F78 /* ConfigHandler.swift */,
-				DB6B90B1290966B900627F78 /* About.swift */,
-				DB6B90B6290967D400627F78 /* SettingsView.swift */,
-				DB6B90B7290967D400627F78 /* TabView.swift */,
-				DB6B90B8290967D400627F78 /* Toolbar.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -126,7 +111,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1410;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					DB40052F290939F400B32892 = {
 						CreatedOnToolsVersion = 14.1;
@@ -168,15 +153,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB6B90BB290967D400627F78 /* Toolbar.swift in Sources */,
-				DB6B90B4290966E000627F78 /* Utility.swift in Sources */,
 				DB4005452909447F00B32892 /* Appdelegate.swift in Sources */,
 				DB6B90BE290968F700627F78 /* ConfigData.swift in Sources */,
 				DB6B90BF290968F700627F78 /* ConfigHandler.swift in Sources */,
-				DB6B90B2290966B900627F78 /* About.swift in Sources */,
 				DB400534290939F400B32892 /* CaffeinateApp.swift in Sources */,
-				DB6B90BA290967D400627F78 /* TabView.swift in Sources */,
-				DB6B90B9290967D400627F78 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,10 +288,10 @@
 				CODE_SIGN_ENTITLEMENTS = Caffeinate/Caffeinate.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Caffeinate/Preview Content\"";
-				DEVELOPMENT_TEAM = VLCLT2XQF5;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -322,7 +302,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lennard.Caffeinate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -338,10 +318,10 @@
 				CODE_SIGN_ENTITLEMENTS = Caffeinate/Caffeinate.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Caffeinate/Preview Content\"";
-				DEVELOPMENT_TEAM = VLCLT2XQF5;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -352,7 +332,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lennard.Caffeinate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

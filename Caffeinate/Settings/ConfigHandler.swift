@@ -41,18 +41,55 @@ class ConfigHandler :ObservableObject {
     
     private func updateAtLogin() {
         if #available(macOS 13.0, *) {
-            conf.atLogin = SMAppService.mainApp.status.rawValue == 1 ? true : false
+            conf.atLogin = SMAppService.mainApp.status == .enabled
         }
     }
-    
-    func applyAtLognin() {
-        if #available(macOS 13.0, *) {
-            if conf.atLogin {
-                try? SMAppService.mainApp.register()
-            } else {
-                try? SMAppService.mainApp.unregister()
-            }
+
+    /// Mutates the config and reassigns it so the @Published sink persists the
+    /// change. ConfigData is a class, so an in-place mutation alone would not
+    /// trigger publication.
+    func mutateConfig(_ change: (ConfigData) -> Void) {
+        let updated = ConfigData(copy: conf)
+        change(updated)
+        conf = updated
+    }
+
+    /// Outcome of trying to change the login-item registration.
+    enum LoginItemResult {
+        case ok(enabled: Bool)   // registration reflects the request
+        case requiresApproval    // the user must enable it in System Settings
+        case failed(Error)       // the register/unregister call threw
+        case unsupported         // macOS < 13
+    }
+
+    /// Attempts to register/unregister the login item, then persists the config
+    /// to whatever the system actually reports — so the checkmark never lies.
+    @discardableResult
+    func setAtLogin(_ desired: Bool) -> LoginItemResult {
+        guard #available(macOS 13.0, *) else {
+            mutateConfig { $0.atLogin = false }
+            return .unsupported
         }
+        var caughtError: Error?
+        do {
+            if desired {
+                try SMAppService.mainApp.register()
+            } else {
+                try SMAppService.mainApp.unregister()
+            }
+        } catch {
+            caughtError = error
+        }
+        // Reflect the real, post-call status rather than the requested value.
+        let status = SMAppService.mainApp.status
+        mutateConfig { $0.atLogin = (status == .enabled) }
+        if let caughtError {
+            return .failed(caughtError)
+        }
+        if status == .requiresApproval {
+            return .requiresApproval
+        }
+        return .ok(enabled: status == .enabled)
     }
     
     func quitApp() {
