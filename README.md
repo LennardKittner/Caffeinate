@@ -33,7 +33,7 @@ The app requires macOS 11 or later to run. The **Start at login** option (in the
 ## Installation
 
 ### Download a release
-Download `Caffeinate.app.zip` from [releases](https://github.com/MichaelCWarren/Caffeinate/releases), unzip it, and move `Caffeinate.app` to `/Applications` (or `~/Applications`).
+Download `Caffeinate.app.zip` from [releases](https://github.com/LennardKittner/Caffeinate/releases), unzip it, and move `Caffeinate.app` to `/Applications` (or `~/Applications`).
 
 The released build is ad-hoc signed (no Developer ID / notarization), so on first launch you may need to right-click the app → **Open**. If Gatekeeper blocks it, clear the quarantine flag:
 
@@ -47,7 +47,7 @@ Add an entry to your `.chezmoiexternal.toml` to pull the app straight from the r
 ```toml
 ["Applications/Caffeinate.app"]
     type = "archive"
-    url = "https://github.com/MichaelCWarren/Caffeinate/releases/download/v1.1.0/Caffeinate.app.zip"
+    url = "https://github.com/LennardKittner/Caffeinate/releases/download/v1.2.0/Caffeinate.app.zip"
     stripComponents = 1
     exact = true
     refreshPeriod = "168h"
@@ -88,6 +88,6 @@ Right-click the menu bar item and choose **Quit Caffeinate**.
 Even if the lid is closed, prevent the Mac from sleeping. This probably requires root privelages.
 
 ## Links
-[CPUMonitor menu bar app](https://github.com/Lennard599/CPUMonitor)
+[CPUMonitor menu bar app](https://github.com/LennardKittner/CPUMonitor)
 
-[ClipBoardManager menu bar app](https://github.com/Lennard599/ClipBoardManager)
+[ClipBoardManager menu bar app](https://github.com/LennardKittner/ClipBoardManager)
