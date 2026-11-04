@@ -7,20 +7,26 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 SDK="$(xcrun --show-sdk-path)"
-ARCH="$(uname -m)"
 BUILD=".build"
 APP="Caffeinate.app"
 
 mkdir -p "$BUILD"
-swiftc \
-    -sdk "$SDK" \
-    -target "${ARCH}-apple-macosx13.0" \
-    -O \
-    -o "$BUILD/Caffeinate" \
-    Caffeinate/CaffeinateApp.swift \
-    Caffeinate/Appdelegate.swift \
-    Caffeinate/Settings/ConfigData.swift \
+SOURCES=(
+    Caffeinate/CaffeinateApp.swift
+    Caffeinate/Appdelegate.swift
+    Caffeinate/Settings/ConfigData.swift
     Caffeinate/Settings/ConfigHandler.swift
+)
+# Build a universal binary so the app runs on both Apple Silicon and Intel Macs.
+for ARCH in arm64 x86_64; do
+    swiftc \
+        -sdk "$SDK" \
+        -target "${ARCH}-apple-macosx13.0" \
+        -O \
+        -o "$BUILD/Caffeinate-$ARCH" \
+        "${SOURCES[@]}"
+done
+lipo -create "$BUILD/Caffeinate-arm64" "$BUILD/Caffeinate-x86_64" -output "$BUILD/Caffeinate"
 
 rm -rf "$APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
