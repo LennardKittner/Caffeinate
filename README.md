@@ -17,6 +17,9 @@ These mirror the flags of the built-in `caffeinate(8)` command-line tool and can
 | Prevent disk idle sleep | `-m` |
 | Prevent system sleep (on AC power) | `-s` |
 
+### Prevent sleep with lid closed
+An extra option, off by default: while Caffeinate is active, a MacBook stays awake when you close the lid, even on battery and without an external display. No root or helper is needed. It uses the public IOKit call `IOConnectCallScalarMethod` on `IOPMrootDomain` with the selector `kPMSetClamshellSleepState` from `IOPMLibDefs.h` (undocumented, but in the SDK). Caffeinate clears it when you turn Caffeinate off, quit, or relaunch it. A closed MacBook in a bag can get hot, so pairing it with the auto-off timer is a good idea.
+
 ### Auto-off timer
 Optionally have Caffeinate turn itself off after a set time. Under **Auto-off after…** in the right-click menu, pick a preset (15 minutes up to 8 hours) or **Custom…** to enter your own duration in minutes; choose **Off** to disable it. When enabled, activating Caffeinate starts a countdown that appears next to the cup in the menu bar (and in the **Active** row of the menu), and Caffeinate deactivates automatically when it reaches zero.
 
@@ -83,9 +86,6 @@ To cut a release (matching the `Caffeinate.app.zip` asset the upstream repo ship
 **How do I quit?**
 
 Right-click the menu bar item and choose **Quit Caffeinate**.
-
-## TODO
-Even if the lid is closed, prevent the Mac from sleeping. This probably requires root privelages.
 
 ## Links
 [CPUMonitor menu bar app](https://github.com/LennardKittner/CPUMonitor)
