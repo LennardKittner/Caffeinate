@@ -28,7 +28,7 @@ Optionally have Caffeinate turn itself off after a set time. Under **Auto-off af
 
 
 ## Requirements
-The app requires macOS 11 or later to run. The **Start at login** option (in the right-click menu) requires macOS 13 or later.
+The app requires macOS 13 or later to run.
 
 ## Installation
 
