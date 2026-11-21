@@ -14,6 +14,7 @@ func ==(op1: ConfigData, op2: ConfigData) -> Bool {
         && op1.preventIdleSleep == op2.preventIdleSleep
         && op1.preventDiskIdle == op2.preventDiskIdle
         && op1.preventSystemSleep == op2.preventSystemSleep
+        && op1.preventLidSleep == op2.preventLidSleep
         && op1.timerEnabled == op2.timerEnabled
         && op1.timerDuration == op2.timerDuration
 }
@@ -28,6 +29,8 @@ final class ConfigData: Decodable, Encodable {
     var preventIdleSleep :Bool    // -i
     var preventDiskIdle :Bool     // -m
     var preventSystemSleep :Bool  // -s
+    // Not a caffeinate(8) flag: disables clamshell (lid-closed) sleep while active.
+    var preventLidSleep :Bool
     // Optional auto-off countdown: when enabled, activation turns itself off
     // after timerDuration seconds.
     var timerEnabled :Bool
@@ -40,6 +43,7 @@ final class ConfigData: Decodable, Encodable {
         case preventIdleSleep
         case preventDiskIdle
         case preventSystemSleep
+        case preventLidSleep
         case timerEnabled
         case timerDuration
     }
@@ -53,6 +57,7 @@ final class ConfigData: Decodable, Encodable {
         self.preventIdleSleep = try container.decodeIfPresent(Bool.self, forKey: .preventIdleSleep) ?? true
         self.preventDiskIdle = try container.decodeIfPresent(Bool.self, forKey: .preventDiskIdle) ?? true
         self.preventSystemSleep = try container.decodeIfPresent(Bool.self, forKey: .preventSystemSleep) ?? true
+        self.preventLidSleep = try container.decodeIfPresent(Bool.self, forKey: .preventLidSleep) ?? false
         self.timerEnabled = try container.decodeIfPresent(Bool.self, forKey: .timerEnabled) ?? false
         self.timerDuration = try container.decodeIfPresent(TimeInterval.self, forKey: .timerDuration) ?? (60 * 60)
     }
@@ -64,6 +69,7 @@ final class ConfigData: Decodable, Encodable {
         preventIdleSleep = true
         preventDiskIdle = true
         preventSystemSleep = true
+        preventLidSleep = false
         timerEnabled = false
         timerDuration = 60 * 60 // default: 1 hour
     }
@@ -75,6 +81,7 @@ final class ConfigData: Decodable, Encodable {
         preventIdleSleep = copy.preventIdleSleep
         preventDiskIdle = copy.preventDiskIdle
         preventSystemSleep = copy.preventSystemSleep
+        preventLidSleep = copy.preventLidSleep
         timerEnabled = copy.timerEnabled
         timerDuration = copy.timerDuration
     }
