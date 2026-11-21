@@ -58,7 +58,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     }
 
     @objc private func statusItemClicked(_ sender: Any?) {
-        if NSApp.currentEvent?.type == .rightMouseUp {
+        let event = NSApp.currentEvent
+        if event?.type == .rightMouseUp || event?.modifierFlags.contains(.control) == true {
             // Temporarily attach the menu so the status item pops it up, then
             // detach so the next left-click fires the action again.
             statusBarItem?.menu = menu
@@ -269,7 +270,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         guard let minutes = Int(field.stringValue), minutes > 0 else { return }
         configHandler.mutateConfig {
             $0.timerEnabled = true
-            $0.timerDuration = TimeInterval(minutes * 60)
+            $0.timerDuration = TimeInterval(min(minutes, 525_600)) * 60
         }
         if hasCoffee { startAutoOffIfNeeded() }
         updateStatusButton()
